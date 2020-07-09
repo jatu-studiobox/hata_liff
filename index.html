@@ -9,7 +9,6 @@
     <script>
         document.write('<link rel="stylesheet" href="css/style.css?cache=' + new Date().getTime() + '" media="all">')
     </script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,500' rel='stylesheet'>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -18,33 +17,13 @@
 </head>
 
 <body>
-    <div class="h-100 row align-items-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-1 p-2">
-                    <label for="txtEmail">Email</label>
-                </div>
-                <div class="col-11 p-2">
-                    <input type="email" class="form-control" id="txtEmail" placeholder="Email" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1 p-2">
-                    <label for="txtPassword">Password</label>
-                </div>
-                <div class="col-11 p-2">
-                    <input type="password" class="form-control" id="txtPassword" placeholder="Password" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col p-2">
-                    <button id="btnLogin" class="btn btn-primary">Log in</button>
-                    <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
-                    <button id="btnLogout" class="btn btn-primary d-none">Log out</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <label for="txtEmail">Email</label>
+    <input type="email" id="txtEmail" placeholder="Email" />
+    <label for="txtPassword">Password</label>
+    <input type="password" id="txtPassword" placeholder="Password" />
+    <button id="btnLogin" class="btn btn-primary">Log in</button>
+    <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+    
     <p id="os"><b>OS:</b> </p>
     <p id="language"><b>Language:</b> </p>
     <p id="version"><b>Version:</b> </p>
