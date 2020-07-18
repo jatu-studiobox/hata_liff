@@ -21,6 +21,7 @@
 
     // Add login event
     btnLogin.addEventListener('click', e => {
+        console.log('click');
         // Get email and pass
         const email = txtEmail.value;
         const pass = txtPassword.value;
@@ -51,10 +52,10 @@
     firebase.auth().onAuthStateChanged(firebaseUser => {  // ใช้ตรวจสอบเมื่อมีการเปลี่ยน state ของการ Authen
         if (firebaseUser) { // ตรวจสอบ firebase user ว่าไม่เท่ากับ null (ถ้าเป็น null แสดงว่าไม่มีข้อมูล firebase user)
             console.log(firebaseUser);
-            btnLogout.classList.remove('d-none');   // เอา css class 'd-none' ออก เพื่อแสดงปุ่ม logout ออกมา
+            btnLogout.classList.remove('hide');   // เอา css class 'd-none' ออก เพื่อแสดงปุ่ม logout ออกมา
         } else {
             console.log('not logged in');
-            btnLogout.classList.add('d-none');   // เพิ่ม css class 'd-none' เข้าไป เพื่อซ่อนปุ่ม logout
+            btnLogout.classList.add('hide');   // เพิ่ม css class 'd-none' เข้าไป เพื่อซ่อนปุ่ม logout
         }
     });
 }());
