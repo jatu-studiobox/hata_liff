@@ -14,10 +14,13 @@
 
     // Get elements
     const inputSection = document.getElementById('inputSection');
+    const operationSection = document.getElementById('operationSection');
     const txtEmail = document.getElementById('txtEmail');
     const txtPassword = document.getElementById('txtPassword');
     const btnLogin = document.getElementById('btnLogin');
     const btnLogout = document.getElementById('btnLogout');
+    const btnGathering = document.getElementById('btnGathering');
+    const lblUser = document.getElementById('lblUser');
 
     // Add login event
     btnLogin.addEventListener('click', e => {
@@ -35,20 +38,39 @@
         firebase.auth().signOut();  // sign out authenticated user ปัจจุบันที่ login อยู่
     });
 
+    // Add gathering event
+    btnGathering.addEventListener('click', e => {
+        console.log('Gathering');
+    });
+
+    function displayUser(firebaseUser) {
+        const { email } = firebaseUser;
+        lblUser.innerText = email;
+    }
+
+    function displayLoginSection() {
+        inputSection.classList.remove('hide');
+        operationSection.classList.add('hide');
+        btnLogin.classList.remove('hide');
+        btnLogout.classList.add('hide');
+    }
+
+    function hideLoginSection() {
+        inputSection.classList.add('hide');
+        operationSection.classList.remove('hide');
+        btnLogin.classList.add('hide');
+        btnLogout.classList.remove('hide');
+    }
+
     // // Add a realtime listener
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
             console.log(firebaseUser);
-            const { email } = firebaseUser;
-            console.log(email);
-            inputSection.classList.add('hide');
-            btnLogin.classList.add('hide');
-            btnLogout.classList.remove('hide');
+            displayUser(firebaseUser);
+            hideLoginSection();
         } else {
             console.log('not logged in');
-            inputSection.classList.remove('hide');
-            btnLogin.classList.remove('hide');
-            btnLogout.classList.add('hide');
+            displayLoginSection();
         }
     });
 }());
