@@ -13,7 +13,7 @@
     firebase.initializeApp(firebaseConfig);
 
     // Get elements
-    const inputSection = document.getElementById('inputSection';)
+    const inputSection = document.getElementById('inputSection');
     const txtEmail = document.getElementById('txtEmail');
     const txtPassword = document.getElementById('txtPassword');
     const btnLogin = document.getElementById('btnLogin');
