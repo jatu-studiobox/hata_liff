@@ -42,8 +42,12 @@
     }
 
     async function GatheringResult(sdate) {
-        const result = await fetch(`https://us-central1-mineko-1.cloudfunctions.net/SearchAndGatheringPsc3YrsLottoPrizeListByDate?sdate=${sdate}`);
-        console.log(result);
+        try {
+            const result = await fetch(`https://us-central1-mineko-1.cloudfunctions.net/SearchAndGatheringPsc3YrsLottoPrizeListByDate?sdate=${sdate}`,{mode: 'cors'});
+            console.log(result);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     function onGatheringClick() {
