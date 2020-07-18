@@ -13,15 +13,14 @@
     firebase.initializeApp(firebaseConfig);
 
     // Get elements
+    const inputSection = document.getElementById('inputSection';)
     const txtEmail = document.getElementById('txtEmail');
     const txtPassword = document.getElementById('txtPassword');
     const btnLogin = document.getElementById('btnLogin');
-    const btnSignUp = document.getElementById('btnSignUp');
     const btnLogout = document.getElementById('btnLogout');
 
     // Add login event
     btnLogin.addEventListener('click', e => {
-        console.log('click');
         // Get email and pass
         const email = txtEmail.value;
         const pass = txtPassword.value;
@@ -31,31 +30,25 @@
         promise.catch(e => console.log(e.message));
     });
 
-    // Add signup event
-    btnSignUp.addEventListener('click', e => {
-        // Get email and pass
-        // TODO: CHECK 4 REAL EMAILZ // ควรจะมีการ check ว่า input email เป็น email จริงด้วย
-        const email = txtEmail.value;
-        const pass = txtPassword.value;
-        const auth = firebase.auth();
-        // Sign in
-        const promise = auth.createUserWithEmailAndPassword(email, pass);   // หลังจาก create user แล้วไม่เกิดอะไรขึ้น
-        promise.catch(e => console.log(e.message)); // ไม่สามารถใช้ promise.then ดึงข้อมูล user ได้ด้วยเนื่องจากถูกทิ้งไปแล้ว เลยทำให้ไม่รู้ว่า user ถูก create รึเปล่า
-    });
-
     // Add log out event
     btnLogout.addEventListener('click', e => {
         firebase.auth().signOut();  // sign out authenticated user ปัจจุบันที่ login อยู่
     });
 
     // // Add a realtime listener
-    firebase.auth().onAuthStateChanged(firebaseUser => {  // ใช้ตรวจสอบเมื่อมีการเปลี่ยน state ของการ Authen
-        if (firebaseUser) { // ตรวจสอบ firebase user ว่าไม่เท่ากับ null (ถ้าเป็น null แสดงว่าไม่มีข้อมูล firebase user)
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser) {
             console.log(firebaseUser);
-            btnLogout.classList.remove('hide');   // เอา css class 'd-none' ออก เพื่อแสดงปุ่ม logout ออกมา
+            const { email } = firebaseUser;
+            console.log(email);
+            inputSection.classList.add('hide');
+            btnLogin.classList.add('hide');
+            btnLogout.classList.remove('hide');
         } else {
             console.log('not logged in');
-            btnLogout.classList.add('hide');   // เพิ่ม css class 'd-none' เข้าไป เพื่อซ่อนปุ่ม logout
+            inputSection.classList.remove('hide');
+            btnLogin.classList.remove('hide');
+            btnLogout.classList.add('hide');
         }
     });
 }());
