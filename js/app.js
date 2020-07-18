@@ -47,6 +47,7 @@
     }
 
     function onGatheringClick() {
+        console.log('onGatheringClick');
         const txtDate = document.getElementById('txtDate');
         const sdate = txtDate.value.trim();
         GatheringResult(sdate);
