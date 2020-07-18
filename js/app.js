@@ -22,27 +22,6 @@
     const btnGathering = document.getElementById('btnGathering');
     const lblUser = document.getElementById('lblUser');
 
-    // Add login event
-    btnLogin.addEventListener('click', e => {
-        // Get email and pass
-        const email = txtEmail.value;
-        const pass = txtPassword.value;
-        const auth = firebase.auth();
-        // Sign in
-        const promise = auth.signInWithEmailAndPassword(email, pass);
-        promise.catch(e => console.log(e.message));
-    });
-
-    // Add log out event
-    btnLogout.addEventListener('click', e => {
-        firebase.auth().signOut();  // sign out authenticated user ปัจจุบันที่ login อยู่
-    });
-
-    // Add gathering event
-    btnGathering.addEventListener('click', e => {
-        console.log('Gathering');
-    });
-
     function displayUser(firebaseUser) {
         const { email } = firebaseUser;
         lblUser.innerText = email;
@@ -61,6 +40,36 @@
         btnLogin.classList.add('hide');
         btnLogout.classList.remove('hide');
     }
+
+    async function GatheringResult(sdate) {
+        const result = await fetch(`https://us-central1-mineko-1.cloudfunctions.net/SearchAndGatheringPsc3YrsLottoPrizeListByDate?sdate=${sdate}`);
+        console.log(result);
+    }
+
+    function onGatheringClick() {
+        const txtDate = document.getElementById('txtDate');
+        const sdate = txtDate.value.trim();
+        GatheringResult(sdate);
+    }
+
+    // Add login event
+    btnLogin.addEventListener('click', e => {
+        // Get email and pass
+        const email = txtEmail.value;
+        const pass = txtPassword.value;
+        const auth = firebase.auth();
+        // Sign in
+        const promise = auth.signInWithEmailAndPassword(email, pass);
+        promise.catch(e => console.log(e.message));
+    });
+
+    // Add log out event
+    btnLogout.addEventListener('click', e => {
+        firebase.auth().signOut();  // sign out authenticated user ปัจจุบันที่ login อยู่
+    });
+
+    // Add gathering event
+    btnGathering.addEventListener('click', onGatheringClick);
 
     // // Add a realtime listener
     firebase.auth().onAuthStateChanged(firebaseUser => {
