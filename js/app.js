@@ -41,7 +41,7 @@
         btnLogout.classList.remove('hide');
     }
 
-    function GatheringResult(sdate) {
+    async function GatheringResult(sdate) {
         try {
             const response = await fetch(`https://us-central1-mineko-1.cloudfunctions.net/SearchAndGatheringPsc3YrsLottoPrizeListByDate?sdate=${sdate}`);
             console.log(response);
