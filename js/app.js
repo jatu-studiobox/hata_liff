@@ -44,7 +44,7 @@
     async function GatheringResult(sdate) {
         try {
             //const result = await fetch(`https://us-central1-mineko-1.cloudfunctions.net/SearchAndGatheringPsc3YrsLottoPrizeListByDate?sdate=${sdate}`,{mode: 'cors'});
-			const result = await fetch(`https://us-central1-test-exe91.cloudfunctions.net/app/hello`);
+			const result = await fetch(`https://us-central1-test-exe91.cloudfunctions.net/app/hello`, {mode: 'cors'});
             console.log(result);
         } catch (error) {
             console.log(error);
