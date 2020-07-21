@@ -74,7 +74,7 @@
         const sdate = txtDate.value.trim();
         setTimeout(() => {
             GatheringResult(sdate);  
-        }, 3000);
+        }, 5000);
         //GatheringResult(sdate);
     }
 
