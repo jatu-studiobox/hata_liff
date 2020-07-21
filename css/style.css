@@ -3,7 +3,7 @@ html, body {
 }
 
 .wait {
-  cursor: wait;
+  cursor: progress;
 }
 
 button {
