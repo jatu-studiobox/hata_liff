@@ -22,6 +22,7 @@
     const btnGathering = document.getElementById('btnGathering');
     const lblUser = document.getElementById('lblUser');
     const loaderElem = document.querySelector('.loader');
+    const overlayElem = document.querySelector('.overlay');
 
     function displayUser(firebaseUser) {
         const { email } = firebaseUser;
@@ -54,13 +55,15 @@
         }
     }
 
-    function showLoader() {        
+    function showLoader() {
         loaderElem.classList.add('visible');
+        overlayElem.classList.add('width100');
         document.body.classList.add('wait');
     }
 
     function hideLoader() {        
         loaderElem.classList.remove('visible');
+        overlayElem.classList.remove('width100');
         document.body.classList.remove('wait');
     }
 
