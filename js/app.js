@@ -1,5 +1,3 @@
-const { load } = require("cheerio");
-
 (function () {
     // Your web app's Firebase configuration
     var firebaseConfig = {
