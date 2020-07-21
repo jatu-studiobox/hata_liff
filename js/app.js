@@ -1,3 +1,5 @@
+const { load } = require("cheerio");
+
 (function () {
     // Your web app's Firebase configuration
     var firebaseConfig = {
@@ -21,6 +23,7 @@
     const btnLogout = document.getElementById('btnLogout');
     const btnGathering = document.getElementById('btnGathering');
     const lblUser = document.getElementById('lblUser');
+    const loaderElem = document.querySelector('.loader');
 
     function displayUser(firebaseUser) {
         const { email } = firebaseUser;
@@ -46,14 +49,26 @@
             const response = await fetch(`https://us-central1-mineko-1.cloudfunctions.net/SearchAndGatheringPsc3YrsLottoPrizeListByDate?sdate=${sdate}`);
             const result = await response.json();
             console.log(result);
+            // hide Loader
+            hideLoader();
         } catch (error) {
             console.log(error);
         }
     }
 
+    function showLoader() {        
+        loaderElem.classList.add('visible');
+        document.body.classList.add('wait');
+    }
+
+    function hideLoader() {        
+        loaderElem.classList.remove('visible');
+        document.body.classList.remove('wait');
+    }
+
     function onGatheringClick() {
-        const loaderElem = document.querySelector('.loader');
-        console.log(loaderElem);
+        // display Loader
+        showLoader();
         const txtDate = document.getElementById('txtDate');
         const sdate = txtDate.value.trim();
         GatheringResult(sdate);
