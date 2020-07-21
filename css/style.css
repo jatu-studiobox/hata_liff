@@ -24,7 +24,7 @@ p {
   display: none;
 }
 
-.centered-element {
+.loader {
   visibility: hidden;
   position: absolute;
   top: 50%;
@@ -42,6 +42,7 @@ p {
   width: 80px;
   height: 80px;
 }
+
 .lds-ellipsis div {
   position: absolute;
   top: 33px;
