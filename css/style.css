@@ -2,6 +2,10 @@ html, body {
   height: 100%;
 }
 
+.wait {
+  cursor: wait;
+}
+
 button {
   display: block;
   width: 100%;
