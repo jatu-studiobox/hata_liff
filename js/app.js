@@ -57,13 +57,13 @@
 
     function showLoader() {
         loaderElem.classList.add('visible');
-        overlayElem.classList.add('width100');
+        overlayElem.style.width = "100%";
         document.body.classList.add('wait');
     }
 
     function hideLoader() {        
         loaderElem.classList.remove('visible');
-        overlayElem.classList.remove('width100');
+        overlayElem.style.width = "0%";
         document.body.classList.remove('wait');
     }
 
