@@ -72,10 +72,10 @@
         showLoader();
         const txtDate = document.getElementById('txtDate');
         const sdate = txtDate.value.trim();
-        setTimeout(() => {
-            GatheringResult(sdate);  
-        }, 5000);
-        //GatheringResult(sdate);
+        // setTimeout(() => {
+        //     GatheringResult(sdate);  
+        // }, 5000);
+        GatheringResult(sdate);
     }
 
     // Add login event
