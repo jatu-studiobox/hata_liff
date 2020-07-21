@@ -23,6 +23,7 @@
     const lblUser = document.getElementById('lblUser');
     const loaderElem = document.querySelector('.loader');
     const overlayElem = document.querySelector('.overlay');
+    const snackbarElem = document.querySelector('.snackbar');
 
     function displayUser(firebaseUser) {
         const { email } = firebaseUser;
@@ -43,15 +44,32 @@
         btnLogout.classList.remove('hide');
     }
 
+    function displayResult(message) {
+        // Add the "show" class to DIV
+        snackbarElem.classList.add('show');
+
+        snackbarElem.innerText = message;
+      
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ snackbarElem.classList.remove('show'); }, 3000);
+      }
+
     async function GatheringResult(sdate) {
         try {
             const response = await fetch(`https://us-central1-mineko-1.cloudfunctions.net/SearchAndGatheringPsc3YrsLottoPrizeListByDate?sdate=${sdate}`);
             const result = await response.json();
             console.log(result);
+            const { message } = result;
             // hide Loader
             hideLoader();
+            // display snackbar message
+            displayResult(message);
         } catch (error) {
             console.log(error);
+            // hide Loader
+            hideLoader();
+            // display snackbar message
+            displayResult('Has error');
         }
     }
 
