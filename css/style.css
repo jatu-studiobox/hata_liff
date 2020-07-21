@@ -1,3 +1,7 @@
+html, body { 
+  height: 100%;
+}
+
 button {
   display: block;
   width: 100%;
@@ -20,6 +24,13 @@ p {
   display: none;
 }
 
+.centered-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .lds-ellipsis {
   display: inline-block;
   position: relative;
@@ -32,7 +43,7 @@ p {
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #ff0000;
+  background: #333;
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 .lds-ellipsis div:nth-child(1) {
