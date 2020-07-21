@@ -44,21 +44,16 @@
     async function GatheringResult(sdate) {
         try {
             const response = await fetch(`https://us-central1-mineko-1.cloudfunctions.net/SearchAndGatheringPsc3YrsLottoPrizeListByDate?sdate=${sdate}`);
-            console.log(response);
-            ///const result = await fetch(`https://us-central1-test-exe91.cloudfunctions.net/app/hello`, {mode: 'no-cors'});
-            // const url = `https://us-central1-test-exe91.cloudfunctions.net/app/hello`; // site that doesn’t send Access-Control-*
-            // fetch(url)
-            //     .then(response => response.text())
-            //     .then(contents => console.log(contents))
-            //     .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
-            // console.log(result);
+            const result = await response.json();
+            console.log(result);
         } catch (error) {
             console.log(error);
         }
     }
 
     function onGatheringClick() {
-        console.log('onGatheringClick');
+        const loaderElem = document.querySelector('.loader');
+        console.log(loaderElem);
         const txtDate = document.getElementById('txtDate');
         const sdate = txtDate.value.trim();
         GatheringResult(sdate);
