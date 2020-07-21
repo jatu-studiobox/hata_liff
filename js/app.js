@@ -64,6 +64,7 @@
             hideLoader();
             // display snackbar message
             displayResult(message);
+            document.getElementById('txtDate').value = "";
         } catch (error) {
             console.log(error);
             // hide Loader
