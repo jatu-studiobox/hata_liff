@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>HATA LIFF</title>
+    <!-- <link rel="stylesheet" href="css/style.css" media="all"> -->
+    <script>
+        document.write('<link rel="stylesheet" href="css/style.css?cache=' + new Date().getTime() + '" media="all">')
+    </script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+</head>
+
+<body>
+	<div>Hata LIFF</div>
+    <div id="inputSection">
+        <label for="txtEmail">Email</label>
+        <input type="email" id="txtEmail" placeholder="Email" />
+        <label for="txtPassword">Password</label>
+        <input type="password" id="txtPassword" placeholder="Password" />
+    </div>
+    <div id="operationSection">
+        <label for="lblUser">User</label>
+        <div id="lblUser"></div>
+        <label for="txtDate">Gathering 3 Years lotto date</label>
+        <input type="text" id="txtDate" placeholder="ddmmyyyy" />
+        <button id="btnGathering">Gathering</button>
+    </div>
+    <button id="btnLogin">Log in</button>
+    <button id="btnLogout" class="hide">Log out</button>
+    <div class="overlay">
+        <div class="loader">
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+    <div class="snackbar"></div>
+    <!-- <script src="js/vconsole.min.js"></script> -->
+    <script>
+        var vConsole = new VConsole()
+        console.log("Hello World!")
+        //errorPlease()
+    </script>
+
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
+    <script>
+        async function main() {
+            //alert("LINE Developers x Skooldio")
+            liff.ready.then(() => {
+                if (!liff.isLoggedIn()) {    // check is Logged In
+                    liff.login();
+                }
+            })            
+            await liff.init({ liffId: "1654311760-gxzm7qrL" });
+        }
+        main();
+    </script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
