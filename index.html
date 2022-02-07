@@ -46,12 +46,18 @@
 
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
     <script>
+	async function getUserProfile() {
+  	    const profile = await liff.getProfile();
+	    console.log(profile.userId);
+	}
         async function main() {
             //alert("LINE Developers x Skooldio")
             liff.ready.then(() => {
                 if (!liff.isLoggedIn()) {    // check is Logged In
                     liff.login();
-                }
+                } else {
+		    getUserProfile();
+		}
             })            
             await liff.init({ liffId: "1654311760-gxzm7qrL" });
         }
